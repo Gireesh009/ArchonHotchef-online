@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<style>
+#ftco-nav ul ul{
+display:none;}
+
+#ftco-nav ul li:hover > ul{
+display:block;
+}
+.link{
+ color: #FF0000;
+ }
+ input[type=button]
+ {
+ background-color: #039be5;
+ }
+ .input-borders{
+        border-radius:30px;
+    }
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+</style>
+  <head>
+
+
+    <title>Hotchef - The Perfect Food at Your Door!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free Template by Free-Template.co" />
+    <meta name="keywords" content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="Free-Template.co" />
+
+       <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'shop/css/bootstrap.min.css' %}">
+	 <link rel="stylesheet" href="{%static 'shop/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/animate.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/jquery.timepicker.css' %}">
+	<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/slick-shop.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/slick-theme-shop.css' %}"/>
+
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/nouislider.min-shop.css' %}"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="{%static 'shop/css/font-awesome.min-shop.css' %}"/>
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/style-shop.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/accountbtn-shop.css' %}"/>
+
+
+
+    <link rel="stylesheet" href="{%static 'shop/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/style.css' %}">
+  </head>
+  <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#section-home" style="color:#101012"> <i class="fa fa-home"></i>Hotchef</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto" >
+
+           <li class="nav-item active"  > <a href="#section-home" class="nav-link" style="color:#101012">Home</a></li>
+           <li class="nav-item" ><a href="#section-offer" class="nav-link" style="color:#101012">Offer</a></li>
+            <li class="nav-item"><a href="#section-menu" class="nav-link" style="color:#101012">Menu</a></li>
+            <li class="nav-item"><a href="#section-gallery" class="nav-link" style="color:#101012">Gallery</a></li>
+              <li class="nav-item"><a href="#" class="nav-link" style="color:#101012">Blog</a></li>
+
+            <li class="nav-item"><a href="#section-contact" class="nav-link" style="color:#101012">Contact</a></li>
+              <li class="nav-item"> <a class="nav-link" style=" text-decoration:none; text-transform: capitalize; color:#101012"><i class='fas fa-user-alt'> Hai, Gireesh </i></a></li>
+                <li class="nav-item">
+                            <a href="form/cart.php"><span style=" color: #f96e01; font-size:30px;"><i class="fa fa-shopping-cart" aria-hidden="true"><span style="color:#f96e01;" id="cart"  class="badge ">0</span></i></span></a>
+                    <button class="btn btn-outline-success my-2 my-sm-0" name="logout" type="submit">Log Out</button>&nbsp;&nbsp;&nbsp;
+                </li>
+
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+ <div class="content-wrapper">
+	    <div class="container" style="padding-block-start: 150px;>
+
+	      <!-- Main content -->
+
+	      <section class="content">
+	        <div class="row" >
+	        	<div class="col-sm-9">
+
+		            <div class="row">
+		            	<div class="col-sm-6">
+		            		<img src="{%static 'shop/images/offer_2.jpg' %}" width="100%" class="zoom" data-magnify-src="{%static 'shop/images/offer_2.jpg' %}">
+		            		<br><br>
+
+		            		<form class="form-inline" id="">
+		            			<div class="form-group">
+                                    <div class="input-group col-sm-5">
+
+			            				<span class="input-group-btn">
+                                            &nbsp;
+			            					<button type="button" id="minus" class="btn btn-default btn-flat btn-lg" style="margin-right: -10px;"><i class="fa fa-minus"></i></button>
+			            				</span>
+							          	<input type="text" name="quantity" id=" " class="form-control input-lg"  value="2">
+							            <span class="input-group-btn">
+							                <button type="button" id="add" class="btn btn-default btn-flat btn-lg " style="margin-right: -10px;"><i class="fa fa-plus"></i>
+							                </button>
+
+							            </span>
+
+							        </div>
+                                    <form>
+			            		  <p class="mb-0"><a href="#" class="btn btn-primary btn-lg btn-flat"   target="_blank"data-toggle="modal" data-target="#Modal_not_login">Continue</a></p>
+                                    </form>
+                                </div>
+		            		</form>
+		            	</div>
+		            	<div class="col-sm-6">
+		            		<h3 class="page-header">Fresh Salmon Fish</h3>
+		            		<p><b>Description:</b></p>
+                             <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+
+                             <h5 class="text-primary">&#8377 340.00</h5>
+
+		            	</div>
+		            </div>
+		            <br>
+				    <div class="fb-comments" data-href="#" data-numposts="10" width="100%"></div>
+	        	</div>
+	        	<div class="col-sm-3">
+
+                   <div class="row">
+	<div class="box box-solid">
+	  	<div class="box-header with-border">
+	    	<h5 class="box-title"><b>Delivery Address</b></h5>
+	  	</div>
+	  	<div class="box-body">
+	  		<center id="trending">
+                <textarea rows="5" cols="50" class="input form-control input-borders" type="textarea" name="address" id="address" placeholder="Mevada P.O
+Mevada
+Pala
+Kottayam
+686573"></textarea>
+                &nbsp;
+                <center></center> <button type="submit" class="btn btn-primary btn-lg btn-flat" style="padding: 5px 50px !important;"  > Change</button></center>
+	    	<ul>
+	  	</div>
+	</div>
+</div>
+
+
+
+
+	        	</div>
+	        </div>
+	      </section>
+
+	    </div>
+	  </div>
+</div>
+
+
+   <!-- section pay-->
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+                <div class="modal fade" id="Modal_not_login" role="dialog">
+                        <div class="modal-dialog">
+                <div class="modal-content"  >
+                          <div class="modal-body">
+                            <div class=" ">
+                              <div class="col-lg-20 p-8">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <small style="right: 160px;">CLOSE </small >
+                </button>
+
+                              </div>
+
+            <form  style="color: #000000;">
+
+                                <h4 class="mb-4"style="color: #f96d00">Choose Your Payment method</h4>
+
+                <br>
+                <br>
+             &nbsp;&nbsp; Credit/Debit/ATM Card &nbsp;&nbsp; &nbsp;<input type="radio"   name="Credit/Debit/ATM Card" value="Credit/Debit/ATM Card"> <br>
+                <br>
+            &nbsp;&nbsp; PhonePe(UPI,Wallet) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"   name="PhonePe" value="PhonePe"><br>
+                <br>
+            &nbsp;&nbsp;  Net Banking &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"   name="Net Banking" value="Net Banking"> <br>
+                <br>
+           &nbsp;&nbsp;  Cash on Delivery &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="radio"   name="Cash on Delivery" value="Cash on Delivery"><br>
+                <br>
+
+
+              <div class="form-group">
+                  <span class="input-group-btn">
+                   <center><h6 > &nbsp;&nbsp; Amount </h6></center>
+                      </span>
+                  <div class="input-group col-sm-5">
+
+			            				<span class="input-group-btn">
+                                            &nbsp;
+                                            <h5 class="text-primary">&#8377 340.00  &nbsp;</h5>
+							            </span>
+                       &nbsp;
+                                <input type="submit" class="btn btn-primary btn-lg" color="#F96D00" value="Confirm" target="_blank"data-toggle="modal" data-target="" >
+							        </div>
+
+              </div>
+
+            </form>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+     <br>
+     <br>
+
+    </section>
+
+
+
+
+    <!-- section pay-->
+
+
+
+ <!-- loader-->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="{%static 'shop/js/jquery.min.js' %}"></script>
+    <script src="{%static 'shop/js/popper.min.js' %}"></script>
+    <script src="{%static 'shop/js/bootstrap.min.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{%static 'shop/js/owl.carousel.min.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.magnific-popup.min.js' %}"></script>
+
+    <script src="{%static 'shop/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.timepicker.min.js' %}"></script>
+
+    <script src="{%static 'shop/js/jquery.animateNumber.min.js' %}"></script>
+
+
+
+    <script src="{%static 'shop/js/main.js' %}"></script>
+
+
+  </body>
+</html>

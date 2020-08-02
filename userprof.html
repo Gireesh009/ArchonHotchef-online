@@ -1,0 +1,649 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<style>
+#ftco-nav ul ul{
+display:none;}
+
+#ftco-nav ul li:hover > ul{
+display:block;
+}
+.link{
+ color: #FF0000;
+ }
+ input[type=button]
+ {
+ background-color: #039be5;
+ }
+ .input-borders{
+        border-radius:30px;
+    }
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+.sidenav {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 100px;
+  left: 50px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 19px;
+  color: #f96e01;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f8f9fa;
+}
+
+.main {
+  margin-left: 120px; /* Same width as the sidebar + left position in px */
+  font-size: 16px; /* Increased text to enable scrolling */
+  padding: 50px 30px;
+  top:60px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+</style>
+  <head>
+
+
+    <title>Hotchef - The Perfect Food at Your Door!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free Template by Free-Template.co" />
+    <meta name="keywords" content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="Free-Template.co" />
+
+       <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'shop/css/bootstrap.min.css' %}">
+	 <link rel="stylesheet" href="{%static 'shop/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/animate.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/jquery.timepicker.css' %}">
+	<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/slick-shop.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/slick-theme-shop.css' %}"/>
+
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/nouislider.min-shop.css' %}"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="{%static 'shop/css/font-awesome.min-shop.css' %}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/style-shop.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/accountbtn-shop.css' %}"/>
+
+
+
+    <link rel="stylesheet" href="{%static 'shop/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/style.css' %}">
+  </head>
+  <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#section-home" style="color:#101012"> <i class="fa fa-home"></i>Hotchef</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto" >
+
+           <li class="nav-item active"  > <a href="#section-home" class="nav-link" style="color:#101012">Home</a></li>
+           <li class="nav-item" ><a href="#section-offer" class="nav-link" style="color:#101012">Offer</a></li>
+            <li class="nav-item"><a href="#section-menu" class="nav-link" style="color:#101012">Menu</a></li>
+            <li class="nav-item"><a href="#section-gallery" class="nav-link" style="color:#101012">Gallery</a></li>
+              <li class="nav-item"><a href="#" class="nav-link" style="color:#101012">Blog</a></li>
+
+            <li class="nav-item"><a href="#section-contact" class="nav-link" style="color:#101012">Contact</a></li>
+              <li class="nav-item"> <a class="nav-link" style=" text-decoration:none; text-transform: capitalize;   color:#000;"><i class='fas fa-user-alt'> Hai, Gireesh </i></a></li>
+                <li class="nav-item">
+                            <a href="form/cart.php"><span style=" color: #f96e01; font-size:30px;"><i class="fa fa-shopping-cart" aria-hidden="true"><span style="color:#f96e01;" id="cart"  class="badge ">2</span></i></span></a>
+                    <button class="btn btn-outline-success my-2 my-sm-0" name="logout" type="submit">Log Out</button>&nbsp;&nbsp;&nbsp;
+                </li>
+
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+           <div class="main" >
+             <div class="middle" style="  padding:40px; border:5px solid #f96e01;  width:100%; position:center;">
+       <!--tab heading-->
+	   <ul class="nav nav-tabs nabbar_inverse" id="myTab" style="background:#f96e01;border-radius:10px 10px 10px 10px; border-color:#000000" role="tablist">
+        <li class="nav-item">
+              <a class="nav-link" style="color:#000000;" id="manageaccount-tab" data-toggle="tab" href="#manageaccount" role="tab" aria-controls="manageaccount" aria-selected="true">Profile</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link active" style="color:#000000;" id="viewitem-tab" data-toggle="tab" href="#viewitem" role="tab" aria-controls="viewitem" aria-selected="false"> Cart</a>
+          </li>
+
+		  <li class="nav-item">
+              <a class="nav-link" style="color:#000000;" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">My Orders</a>
+          </li>
+
+		  <li class="nav-item">
+              <a class="nav-link" style="color:#000000;" id="tbl-tab" data-toggle="tab" href="#tbl" role="tab" aria-controls="tbl" aria-selected="false">Table Reservations</a>
+          </li>
+       </ul>
+
+
+	   <div class="tab-content" id="myTabContent">
+
+
+			<!--tab 1 starts-->
+
+            <div class="tab-pane show active" style=" width:500px; " id="manageaccount" role="tabpanel" aria-labelledby="home-tab">
+
+
+			    <form method="post" enctype="multipart/form-data" style=" width:500px;" >
+                    <center>
+                     <table style="width: 500px; ">
+                      <tr>
+                    <td height="0px">
+                    <div class="form-group" >
+
+                      <label for="name">Name</label>
+
+                      <input type="text" id="name" style="font-size:16px; width: 500px;" value="Gireesh Kumar M" class="form-control" name="name" required="required"/>
+                    </div>
+                        </td>
+
+                       <td>
+                         <div class="form-group" >
+                           <br>
+                               <br>
+                      <label for="name">Adress</label>
+                    <textarea rows="5"  class="input form-control input-borders"  style=" font-size: 16px; width: 500px;" type="textarea" name="address" id="address" placeholder="Mevada P.O
+Mevada
+Pala
+Kottayam
+686573"></textarea>
+                    </div>
+                       </td>
+                      </tr>
+                      <tr>
+                    <td>
+					<div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" style=" font-size: 16px; width: 500px;" name="email" value="gireesh009@gmail.com" class="form-control"  readonly/>
+                    </div>
+                       </td>
+
+                      <td>
+                    <div class="form-group" >
+
+                      <label for="name">City</label>
+
+                      <input type="text" id="name" style=" font-size: 16px; width: 500px;" value="pala" class="form-control" name="city" required="required"/>
+                    </div>
+                        </td>
+</tr>
+                      <tr>
+                    <td>
+					<div class="form-group">
+                      <label for="mobile">Mobile</label>
+                      <input type="tel" id="mobile" style=" font-size: 16px; width: 500px;" class="form-control" name="mobile" pattern="[6-9]{1}[0-9]{2}[0-9]{3}[0-9]{4}" value="9746311449" placeholder="" required>
+                    </div>
+                     </td>
+
+                      <td>
+                    <div class="form-group" >
+
+                      <label for="name">Pincode</label>
+
+                      <input type="text" id="pincode"  style=" font-size: 16px; width: 500px;" value="686573" class="form-control" name="picode" required="required"/>
+                    </div>
+                        </td>
+</tr>
+                      <tr>
+                    <td>
+                   <div class="form-group">
+                      <label for="pwd">Password:</label>
+                     <input type="password" name="pswd"  style=" font-size: 16px; width: 500px;" value="009143009>"class="form-control"  id="pwd" required/>
+                   </div>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+<center>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          <button type="submit" name="update"  style="background:#f96e01; border:1px solid #ED2553;  font-size: 16px;     padding-left: 100px;
+    padding-right: 100px;" class="btn btn-warning">Update</button>
+
+</center>     </td>
+                                  </tr>
+
+                 </table>
+                    </center>
+</form>
+
+			</div>
+
+			<!--tab 1 ends-->
+            <!--tab 2 starts-->
+
+            <div class="tab-pane fade " id="viewitem" role="tabpanel" aria-labelledby=" view-tab">
+                 <br><br>
+                 <table class="table" >
+                  <tbody >
+
+                      <tr>
+                         <td><image src="{%static 'shop/images/menu_3.jpg' %}" height="80px" width="100px"></td>
+                         <td>Fried Potato w/ Garlic</td>
+                         <td> &#8377 170.00</td>
+                         <td>BREAKFAST</td>
+                         <td>2</td>
+		                <form method="post" enctype="multipart/form-data">
+                           <td><button class="material-icons "  style="background-color:#ffffff; color:red; border:0px; font-size: 31px" >delete</button></td> </form>
+                        <td>&#8377 340.00</td>
+                      </tr>
+<tr>
+                         <td><image src="{%static 'shop/images/menu_1.jpg' %}" height="80px" width="100px"></td>
+                         <td>Salted Fried Chicken</td>
+                         <td> &#8377 240.50</td>
+                         <td>BREAKFAST</td>
+                         <td>1</td>
+		                <form method="post" enctype="multipart/form-data">
+                           <td><button class="material-icons "  style="background-color:#ffffff; color:red; border:0px;font-size: 31px">delete</button></td>
+                        </form>
+                        <td>&#8377 240.50</td>
+                      </tr>
+
+
+						<tr>
+					  <td>
+					  <h5 style="color:red;">Grand total</h5>
+					  </td>
+					  <td>
+					  <h5><i class="fas fa-rupee-sign"></i>&nbsp;&#8377 580.50</h5>
+					  </td>
+					  <td>
+
+					  </td>
+					  <td></td>
+
+					  <td style="padding:30px; text-align:center;">
+                        <form>
+					  <a href="#" class="btn btn-warning" style=" border-color: #000000; color:white; font-weight:bold; text-transform:uppercase;"  target="_blank"data-toggle="modal" data-target="#Modal_not_login">Proceed to checkout</button></a>
+
+                                    </form>
+					  </td>
+					  <td></td>
+					  </tr>
+
+
+					 <tr> </tr>
+
+
+                 </tbody>
+	      </table>
+
+		  <span style="color:green; text-align:centre;"><?php if(isset($success)) { echo $success; }?></span>
+
+
+
+
+         </div>
+
+<!--tab 2 ends-->
+
+			 <!--tab 3 starts-->
+            <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+			    <table class="table">
+                    <th>Item </th>
+				<th>Order Id</th>
+				<th>Price</th>
+                    <th>Status</th>
+				<th>Cancel order</th>
+				    <tbody>
+
+					   <tr>
+                           <td><image src="{%static 'shop/images/menu_3.jpg' %}" height="80px" width="100px"><br>Fried Potato w/ Garlic <br> <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                           </fieldset>  &nbsp; <a href="" style="color: #1000ff;" target="_blank" data-toggle="modal" data-target="#Modal_review">Write Review </a></td>
+
+					   <td>order101010011</td>
+					   <?php
+					   if(empty($qrr['foodname']))
+					   {
+					   ?>
+<!--					   <td><span style="color:red;">Product Not Available Now</span></td>-->
+					   <?php
+					   }
+					   else
+					   {
+						   ?>
+<!--						    <td> Fried Potato w/ Garlic </td>-->
+						   <?php
+					   }
+					   ?>
+
+					   <td>&#8377 170.00</td>
+                             <td><span class="badge badge-xs badge-warning">Pending</span>
+					   <td><a href="#" onclick=""><button type="button" class="btn btn-danger" style="padding-left: 10px; padding-right: 10px; font-size: 10px;">Cancel Order</button></a></td>
+					   </tr>
+					 <?php
+					}
+					 ?>
+					</tbody>
+				</table>
+			</div>
+			<!--tab 3 ends-->
+
+            <!--tab 4 starts-->
+
+            <div class="tab-pane fade " id="tbl" role="tabpanel" aria-labelledby="tbl">
+                 <br><br>
+                 <table class="table">
+				<th>Resevation Id</th>
+				<th>Table Number</th>
+                     <th>Quantity</th>
+                      <th>Date</th>
+                     <th>Time</th>
+
+				<th>Price</th>
+                     <th>Print</th>
+
+				<th>Cancel order</th>
+				    <tbody>
+
+					   <tr>
+					   <td>R101010020</td>
+					   <?php
+					   if(empty($qrr['foodname']))
+					   {
+					   ?>
+<!--					   <td><span style="color:red;">Product Not Available Now</span></td>-->
+					   <?php
+					   }
+					   else
+					   {
+						   ?>
+                            <td>Table No: 1</td>
+						    <td>2</td>
+                            <td>3/9/2020</td>
+						    <td>12.00pm-12.30pm</td>
+						   <?php
+					   }
+					   ?>
+
+					  <td>&#8377 200.00</td>
+                           <td><a href="#"  class=" fa fa-print" style="padding-left: 10px; padding-right: 10px; font-size: 30px; color:black"></a></td>
+
+                           <td><a href="#" onclick=""><button type="button" class="btn btn-danger" style="padding-left: 10px; padding-right: 10px; font-size: 10px;">Cancel Reservation</button></a><br><a style="font-size:10px">Cancel reservation On or before 2 Hrs</a></td>
+				</tr>
+					 <?php
+					}
+					 ?>
+					</tbody>
+				</table>
+         </div>
+
+<!--tab 4 ends-->
+
+
+	  </div>
+	</div>
+
+
+
+    <!-- section cart-->
+</div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+                <div class="modal fade" id="Modal_not_login" role="dialog">
+                        <div class="modal-dialog">
+                <div class="modal-content"  >
+                          <div class="modal-body">
+                            <div class=" ">
+                              <div class="col-lg-10 p-5">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding-right: 0px; padding-bottom: 0px;  padding-left: 210px;">
+                                  <small>CLOSE </small><span aria-hidden="true">&times;</span>
+                                </button>
+
+
+            <form  style="color: #000000;">
+                         <center>
+                                <h4 class="mb-3"style="color: #f96d00">Choose Your Payment method</h4>
+                                  </center>
+                <br>
+                <br>
+             Credit/Debit/ATM Card &nbsp;&nbsp; &nbsp;<input type="radio"   name="Credit/Debit/ATM Card" value="Credit/Debit/ATM Card"> <br>
+                <br>
+            PhonePe(UPI,Wallet) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"   name="PhonePe" value="PhonePe"><br>
+                <br>
+             Net Banking &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"   name="Net Banking" value="Net Banking"> <br>
+                <br>
+            Cash on Delivery &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="radio"   name="Cash on Delivery" value="Cash on Delivery"><br>
+                <br>
+              <div class="form-group">
+                  <span class="input-group-btn">
+                    <h6 >Amount </h6>
+                      </span>
+                  <div class="input-group col-sm-5">
+
+			            				<span class="input-group-btn">
+                                            &nbsp;
+                                            <h5 class="text-primary">&#8377 580.50   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; </h5>
+							            </span>
+                       &nbsp;
+                                <input type="submit" class="btn btn-primary btn-lg" color="#F96D00" value="Confirm" target="_blank"data-toggle="modal" data-target="#Modal_not_login" >
+							        </div>
+
+              </div>
+
+            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+                        </div>
+                </div>
+
+
+
+
+
+
+    <!-- section pay-->
+
+    <!----review------>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+                <div class="modal fade" id="Modal_review" role="dialog">
+                        <div class="modal-dialog">
+                <div class="modal-content"  >
+                          <div class="modal-body">
+                            <div class=" ">
+                              <div class="col-lg-10 p-5">
+<h5>Review the food</h5>
+ <textarea rows="5"  class="input form-control input-borders"  style=" font-size: 10px; width: 400px;" type="textarea" name="address" id="address" placeholder=" Write something..."></textarea>
+
+            <form  style="color: #000000;">
+                <br>
+                <center>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     <input type="submit" class="btn btn-primary btn-lg" color="#F96D00" style="border-radius: 10px; font-size: 14px !important; padding: 10px 50px !important;" value="Finsih & Skip"  ></center>
+
+
+
+            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+                        </div>
+
+
+
+    <!-----review------>
+ <!-- loader-->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="{%static 'shop/js/jquery.min.js' %}"></script>
+    <script src="{%static 'shop/js/popper.min.js' %}"></script>
+    <script src="{%static 'shop/js/bootstrap.min.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{%static 'shop/js/owl.carousel.min.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.magnific-popup.min.js' %}"></script>
+
+    <script src="{%static 'shop/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{%static 'shop/js/jquery.timepicker.min.js' %}"></script>
+
+    <script src="{%static 'shop/js/jquery.animateNumber.min.js' %}"></script>
+
+
+
+    <script src="{%static 'shop/js/main.js' %}"></script>
+
+
+  </body>
+</html>
