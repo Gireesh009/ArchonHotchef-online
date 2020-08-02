@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en-us" >
+
+<head>
+
+    <title>Hotchef - Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free Template by Free-Template.co" />
+    <meta name="keywords" content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="Free-Template.co" />
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'shop/css/bootstrap.min.css' %}">
+	 <link rel="stylesheet" href="{%static 'shop/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/animate.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/jquery.timepicker.css' %}">
+	<!-- Slick -->
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css">
+<link type="text/css" rel="stylesheet" href="{%static 'shop/css/slick-shop.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/slick-theme-shop.css' %}"/>
+
+<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="{%static 'shop/css/nouislider.min-shop.css' %}"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="{%static 'shop/css/font-awesome.min-shop.css' %}">
+
+		<link rel="stylesheet" href="{%static 'shop/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{%static 'shop/css/style.css' %}">
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" login"
+  data-admin-utc-offset="0">
+<br>
+<br>
+<!-- Container -->
+
+ <div class="container" style=" background: #f1efed"  >
+ <a class="navbar-brand" href="#section-home" style=" color: #141415; font-size: 1.75rem;"> <i class="fa fa-home"></i>Hotchef</a>
+
+ <div class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-light " id="ftco-navbar" >
+
+		  <div id="container"  >
+
+    <!-- Header -->
+    <div id="header" style="    background: #ef8431;">
+        <div id="branding">
+
+<h1 id="site-name" style="font-weight: 1000;"><a href="{% url 'hotadmin:adminhome' %}">Hotchef Administrator</a></h1>
+
+        </div>
+
+
+    </div>
+    <!-- END Header -->
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="colM">
+
+
+
+
+
+
+
+<div id="content-main">
+
+
+
+<form action="{% url 'hotadmin:adminhome' %}" method="post" id="login-form"><input type="hidden" name="csrfmiddlewaretoken" value="SZJkHhrBrhbEJrD9BFU45G7IoI9gw5nMvQn4jRBnINaeIOEDw3iY5PIlyj8HvJQE">
+  <div class="form-row" style="font-family: Poppins-Bold;" >
+
+    <label class="required" for="id_username">Username:</label> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+  </div>
+  <div class="form-row" style="font-family: Poppins-Bold;" >
+
+    <label class="required" for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required id="id_password">
+    <input type="hidden" name="next" value="/admin/">
+  </div>
+
+
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit"  style="    background: #ef8431;" value="Log in">
+  </div>
+</form>
+
+</div>
+
+
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+ </div>
+</body>
+</html>
